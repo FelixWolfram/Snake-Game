@@ -3,7 +3,7 @@ from segment_info import Snakehead, Turncells, Snakesegments
 from math import sqrt
 
 class Snake:
-    def __init__(self, x ,y, cell_size, fps, field_coords, win, snake_head_img):
+    def __init__(self, win, x ,y, cell_size, fps, field_coords):
         self.win = win
         self.segment_size = cell_size
         self.field_size = sqrt(len(field_coords))
@@ -14,7 +14,7 @@ class Snake:
         self.turn_cells = [] # stores the cells where the snake turns, direction of the turn and how many segements passed this cell
         self.field_coords = field_coords
         self.segment_color = (70, 180, 230)
-        self.head_img = snake_head_img
+
 
     def move(self):
         all_segments = [self.head] + self.segments

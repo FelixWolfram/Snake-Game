@@ -1,5 +1,4 @@
 import pygame
-from snake_head import SnakeHeadImg
 from snake import Snake
 from apple import Apple
 
@@ -7,7 +6,6 @@ class Game:
     def __init__(self):
         self.bar_size = 80 # bar which displays the score, highscore, ...      
         self.wall_size = 20 # size of the wall around the board
-        self.head_img = SnakeHeadImg()
 
         self.board_width = 800
         self.win_width = 800 + self.wall_size * 2
@@ -30,8 +28,8 @@ class Game:
         self.next_turns = []
         self.max_next_turns = 3
         self.start_length = 3
-        self.snake = Snake(self.cell_size * 5 + self.wall_size, self.cell_size * 9 + self.bar_size + self.wall_size, self.cell_size,
-                           self.fps, self.field_coords, self.win, self.head_img)
+        self.snake = Snake(self.win, self.cell_size * 5 + self.wall_size, self.cell_size * 9 + self.bar_size + self.wall_size, self.cell_size,
+                           self.fps, self.field_coords)
         for _ in range(self.start_length - 1):
             self.snake.add_segment()
         self.apple = Apple(self.snake.head, self.snake.segments, self.field_coords, self.cell_size, self.field_size)
