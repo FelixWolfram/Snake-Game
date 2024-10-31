@@ -58,8 +58,7 @@ class Game:
     def mainloop(self):
         while True:
             pygame.time.Clock().tick(self.fps)
-            events = pygame.event.get()
-            for event in events:
+            for event in pygame.event.get():
                 pos = pygame.mouse.get_pos()
                 if event.type == pygame.QUIT:
                     global close_win
