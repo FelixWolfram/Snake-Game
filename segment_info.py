@@ -14,7 +14,8 @@ class Snakesegments:
 
 
 class Turncells:
-    def __init__(self, cell, direction):
+    def __init__(self, cell, direction, round_corner):
         self.cell = cell
         self.direction = direction
         self.segments_passed = 0
+        self.round_corner = round_corner    # stores, at which corner the snake should be round -> only for the animation

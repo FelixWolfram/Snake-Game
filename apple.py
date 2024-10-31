@@ -18,16 +18,13 @@ class Apple:
             self.pos = randint(0, int((self.field_size ** 2) - 1))
 
             # check if the apple is not on the snake
-            if abs((self.field_coords[self.pos])[0] - self.head.x) < self.cell_size and\
-               abs((self.field_coords[self.pos])[1] - self.head.y) < self.cell_size: # check whehter the apple is on the head of the snake
-                continue
-            if self.segments:
-                for segment in self.segments:
-                    if abs(self.field_coords[self.pos][0] - segment.x) >= self.cell_size and\
-                       abs(self.field_coords[self.pos][1] - segment.y) >= self.cell_size: # check whehter the apple is on a segment of the snake
-                        valid_pos = True
+            if self.field_coords[self.pos] == (self.head.x, self.head.y): # if the apple is on the head of the snake
+               continue
             else:
                 valid_pos = True
+                for segment in self.segments:
+                    if self.field_coords[self.pos] == (segment.x, segment.y):
+                        valid_pos = False
 
 
     def draw(self, win):
