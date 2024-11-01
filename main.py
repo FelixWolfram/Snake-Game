@@ -56,7 +56,7 @@ class Game:
     
     
     def mainloop(self):
-        while True:
+         while True:
             pygame.time.Clock().tick(self.fps)
             events = pygame.event.get()
             for event in events:
@@ -67,8 +67,10 @@ class Game:
                     return
                 elif event.type == pygame.KEYDOWN and self.game_start:
                     self.game_start = False
-                elif (event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN) and self.end:
-                    if self.bottom_end_window.collidepoint(pos) or event.key == pygame.K_SPACE:
+                elif (event.type == pygame.MOUSEBUTTONDOWN and self.end):
+                    if self.bottom_end_window.collidepoint(pos):
+                        return
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.end:
                         return
                 if self.bottom_end_window.collidepoint(pos) and self.end:
                     self.bottom_window_col = self.colors["hover_color"]
